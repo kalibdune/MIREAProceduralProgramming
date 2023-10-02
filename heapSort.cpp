@@ -1,8 +1,13 @@
-#include <fstream>
 #include <iostream>
-#include <string>
 
 using namespace std;
+
+void printArr(int *arr, int n) {
+  for (int i = 0; i < n; ++i) {
+    cout << arr[i] << " ";
+  }
+  cout << "\n";
+}
 
 void shiftDown(int *heap, int i, int size) {
   int maxI = i;
@@ -45,39 +50,8 @@ void heapSort(int *heap, int size) {
 }
 
 int main() {
-  string line = "nivmxarosbehtqpfywkdjuclg";
-
-  ofstream file;
-  file.open("sort.txt", ios::out);
-  if (file) {
-    file << line;
-    cout << "writing complete!\n";
-  } else {
-    cout << "err\n";
-  }
-  file.close();
-
-  string output;
-  ifstream file2;
-  file2.open("sort.txt", ios::in);
-
-  if (file2) {
-    getline(file2, output);
-    cout << "reading complete!\n";
-  } else {
-    cout << "err\n";
-  }
-
-  file2.close();
-  // тупое преобразование из строки в масив
-  int arr[line.size()];
-  int n = output.size() - 1;
-  for (int i = 0; i < n; ++i) {
-    arr[i] = (int)output[i];
-  }
-
-  heapSort(arr, output.size());
-  for (int i = 0; i < n; ++i) {
-    cout << (char)arr[i];
-  }
+  int arr[] = {4, 5, 6, 8, 10, 12, 1, 2, 7, 3};
+  int size = sizeof(arr) / sizeof(arr[0]);
+  heapSort(arr, size);
+  printArr(arr, size);
 }
