@@ -16,8 +16,8 @@ bool isUniqe(int* arr, int num) {
 int* getRandomNum() {
     static int arr[4];
     int i = 0;
+    srand(time(0));
     while (i < 4) {
-        srand(time(0));
         int num = rand() % 10;
 
         if (isUniqe(arr, num)) {
